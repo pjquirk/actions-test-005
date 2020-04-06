@@ -1,9 +1,10 @@
 on: push
 jobs:
   build:
-    runs-on:
-      pool: default
-
+    strategy:
+      matrix:
+        os: [windows-latest ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}    
     steps:      
     - if: runner.os == 'Windows'
       run: ping -n 5000000 localhost      
