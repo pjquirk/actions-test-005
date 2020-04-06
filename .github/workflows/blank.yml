@@ -1,0 +1,11 @@
+on: push
+jobs:
+  build:
+    runs-on:
+      pool: default
+
+    steps:      
+    - if: runner.os == 'Windows'
+      run: ping -n 5000000 localhost      
+    - if: runner.os != 'Windows'
+      run: ping -c 5000000 localhost
